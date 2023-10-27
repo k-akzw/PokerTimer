@@ -26,10 +26,11 @@ class Model: NSObject, ObservableObject {
 
     @Published var timeText = ""
     @Published var bigBlind = 0
-    @Published var isPaused = false
+    @Published var isPaused = true
     @Published var isBreak = false
     @Published var chipChange = false
     @Published var imageName = ""
+    @Published var showButton = true
     private var timeRemaining = 0
     private var bigBlindIndex = 0
     private var durationIndex = 0
@@ -50,7 +51,8 @@ class Model: NSObject, ObservableObject {
         timeRemaining = durations[durationIndex]
         timeText = convertSecondsToTime(from: timeRemaining)
         bigBlind = bigBlinds[bigBlindIndex]
-        isPaused = false
+        isPaused = true
+        showButton = true
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             self.decrementTimer()
         }
